@@ -1,5 +1,5 @@
 import "../styles/styles.css";
-import banner from "../assets/banner.webp";
+import banner from "../assets/Banner.webp";
 function Hero() {
   return (
     <div className="hero">
