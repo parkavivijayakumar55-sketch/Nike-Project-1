@@ -1,60 +1,56 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import "../styles/styles.css";
+
+import men7 from "../assets/men7.avif";
+import men9 from "../assets/men9.jpg";
+import women7 from "../assets/women7.jpg";
 
 function Home() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const queryParams = new URLSearchParams(location.search);
   const searchTerm = queryParams.get("search") || "";
- 
+
   return (
     <>
       <Navbar />
       <Hero />
 
-function Home() {
-  return (
-    <>
-      <Hero />
-
-      {/* Featured Products */}
       <section className="featured-products">
-
         <h2>Featured Products</h2>
         <p>Explore our best-selling collections designed for performance and style.</p>
 
         <div className="product-container">
 
           <div className="product-card">
-            <img src="/images/running.jpg" alt="Running Shoes" />
+            <img src={women7} alt="Running Shoes" />
             <h3>Running Shoes</h3>
           </div>
 
           <div className="product-card">
-            <img src="/images/casual.jpg" alt="Casual Shoes" />
+            <img src={men7} alt="Casual Shoes" />
             <h3>Casual Shoes</h3>
           </div>
 
           <div className="product-card">
-            <img src="/images/basketball.jpg" alt="Basketball Shoes" />
+            <img src={men9} alt="Basketball Shoes" />
             <h3>Basketball Shoes</h3>
-          </div>
-
-          <div className="product-card">
-            <img src="/images/sportswear.jpg" alt="Sports Wear" />
-            <h3>Sports Wear</h3>
           </div>
 
         </div>
 
-        <button className="view-btn">View All Products</button>
-
+        <button
+          className="view-btn"
+          onClick={() => navigate("/products")}
+        >
+          View All Products
+        </button>
       </section>
 
-      <Contact />
-    </>
-  );
-}
       <div className="contact-section">
         <h2>Contact Us</h2>
 

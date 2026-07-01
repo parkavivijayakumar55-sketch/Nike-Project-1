@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Login from "./pages/Login";
-import Signup from "./pages/SignUp.jsx";
+import Signup from "./pages/SignUp";
 import Home from "./pages/Home";
 
 import ProductList from "./components/ProductList";
@@ -24,30 +24,42 @@ function App() {
 
       <Routes>
 
-        {/* AUTH */}
+        {/* Authentication */}
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* HOME */}
+        {/* Home */}
         <Route path="/home" element={<Home />} />
 
-        {/* CATEGORY SYSTEM */}
-        
+        {/* View All Products */}
         <Route
-  path="/men"
-  element={<ProductList type="men" cart={cart} setCart={setCart} />}
-/>
-        <Route
-  path="/women"
-  element={<ProductList type="women" cart={cart} setCart={setCart} />}
-/>
-        <Route
-  path="/kids"
-  element={<ProductList type="kids" cart={cart} setCart={setCart} />}
-/>  
+          path="/products"
+          element={<ProductList type="all" cart={cart} setCart={setCart} />}
+        />
 
-        {/* CART */}
-        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+        {/* Men */}
+        <Route
+          path="/men"
+          element={<ProductList type="men" cart={cart} setCart={setCart} />}
+        />
+
+        {/* Women */}
+        <Route
+          path="/women"
+          element={<ProductList type="women" cart={cart} setCart={setCart} />}
+        />
+
+        {/* Kids */}
+        <Route
+          path="/kids"
+          element={<ProductList type="kids" cart={cart} setCart={setCart} />}
+        />
+
+        {/* Cart */}
+        <Route
+          path="/cart"
+          element={<Cart cart={cart} setCart={setCart} />}
+        />
 
       </Routes>
 

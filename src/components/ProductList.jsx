@@ -102,8 +102,17 @@ function ProductList({ type, cart, setCart }) {
   };
 
   // 🔥 PRODUCTS
-  const products = data?.[type]?.[tab] ?? data?.[type]?.all ?? [];
+let products = [];
 
+if (type === "all") {
+  products = [
+    ...data.men.all,
+    ...data.women.all,
+    ...data.kids.all,
+  ];
+} else {
+  products = data?.[type]?.[tab] ?? data?.[type]?.all ?? [];
+}
   // 🛒 ADD TO CART
   const addToCart = (item) => {
     setCart((prev) => [...prev, { ...item, quantity: 1 }]);
@@ -113,8 +122,11 @@ function ProductList({ type, cart, setCart }) {
   return (
     <div className="category-page">
 
-      <h1>{type.toUpperCase()} COLLECTION</h1>
-
+<h1>
+  {type === "all"
+    ? "ALL PRODUCTS"
+    : `${type.toUpperCase()} COLLECTION`}
+</h1>
       {/* PRODUCTS */}
       {products.map((item) => (
         <div className="product-card" key={item.id}>
